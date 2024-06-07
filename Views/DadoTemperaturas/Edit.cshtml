@@ -1,0 +1,44 @@
+﻿@model DaVinciGlobal.Models.DadoTemperatura
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar</h1>
+
+<h4>Dados de Temperatura</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DadoTemperaturaId" />
+            <div class="form-group">
+                <label asp-for="DataColeta" class="control-label"></label>
+                <input asp-for="DataColeta" class="form-control" />
+                <span asp-validation-for="DataColeta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Temperatura" class="control-label"></label>
+                <input asp-for="Temperatura" class="form-control" />
+                <span asp-validation-for="Temperatura" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SensorId" class="control-label"></label>
+                <select asp-for="SensorId" class="form-control" asp-items="ViewBag.SensorId"></select>
+                <span asp-validation-for="SensorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

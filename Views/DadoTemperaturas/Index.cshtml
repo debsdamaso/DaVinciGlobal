@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DaVinciGlobal.Models.DadoTemperatura>
+
+@{
+    ViewData["Title"] = "Temperaturas";
+}
+
+<h1>Temperaturas</h1>
+
+<p>
+    <a asp-action="Create">Registrar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataColeta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Temperatura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sensor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataColeta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Temperatura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sensor.Localizacao)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DadoTemperaturaId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.DadoTemperaturaId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.DadoTemperaturaId">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
